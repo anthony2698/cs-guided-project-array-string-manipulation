@@ -20,6 +20,50 @@ Output: -1
 Explanation:
 There is no index that satisfies the conditions in the problem statement.
 """
+def get_left_sum(nums, index):
+    if index == 0:
+        return 0
+    return sum(nums[0 : index])
+
+def get_right_sum(nums, index):
+    if index == len(nums) - 1:
+        return 0
+    return sum(nums[index + 1 :])
+
 def pivot_index(nums):
     # Your code here
+
+    # Idea 1 O(n^2) -> each number will go ahead and sum up everything to its left and everything to its right
+    # Check if those sums are equal,  as soon as we find such a number, we'll return it
+    #for i in range(len(nums)): # O(n)
+        # get left sum 
+        #left_sum = get_left_sum(nums, i) # O(n/2)
+
+        # get right sum
+        #right_sum = get_right_sum(nums, i) # O(n/2)
+
+        #if left_sum == right_sum:
+            #return i
+
+    #return -1
+
+    # Idea 2 -> O(n)
+    left = 0
+    right = sum(nums) # O(n)
+
+    for i, num in enumerate(nums): # O(n)
+        right -= num
+
+        if left == right:
+             return i
+
+        left += num
+
+    return -1
+
+
+
+
+
+
 
